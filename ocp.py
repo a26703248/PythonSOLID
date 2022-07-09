@@ -74,6 +74,9 @@ class SystemMonitor1:
         self.event = event
 
     def identity(self):
+        # 因為每個子類都會實作 meet_condition
+        # 所以利用迴圈依序呼叫子類 meet_condition
+        # 判斷是否觸發條件
         for event_cls in Event2.__subclasses__():
             try:
                 if event_cls.meet_condition(self.event):
